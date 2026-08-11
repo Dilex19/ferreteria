@@ -22,6 +22,15 @@ public class productoWebController {
         return "lista";
     }
 
+    @GetMapping("/productos")
+    public String traerProductosX2(Model model) {
+        model.addAttribute(
+                "productos",
+                productoService.findAllProductos());
+        return "lista";
+    }
+
+
     @GetMapping("/nuevo")
     public String mostrarFormulario(Model model) {
         model.addAttribute("producto", new Producto());
@@ -42,12 +51,12 @@ public class productoWebController {
                     producto);
         }
 
-        if(resultado!=null){
+        if(resultado==null){
             model.addAttribute("producto", resultado);
             model.addAttribute("titulo",
                     producto.getId()==null
                             ? "Registrar producto"
-                            : "Edictar producto"
+                            : "Editar producto"
             );
 
             model.addAttribute(
