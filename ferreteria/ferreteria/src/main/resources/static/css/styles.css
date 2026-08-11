@@ -1,0 +1,301 @@
+@charset "UTF-8";
+
+:root {
+    /* Tema Naranja y Negro */
+    --primary-color: #ff6600;
+    --primary-hover: #e65c00;
+    --bg-dark: #121212;
+    --bg-panel: #1e1e1e;
+    --text-light: #f5f5f5;
+    --text-muted: #aaaaaa;
+
+    /* Colores de acciones */
+    --btn-edit: #f1c40f;
+    --btn-edit-hover: #d4ac0d;
+    --btn-delete: #e74c3c;
+    --btn-delete-hover: #c0392b;
+
+    --border-color: #333333;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* Encabezado */
+header {
+    background-color: var(--bg-panel);
+    padding: 2rem;
+    border-bottom: 4px solid var(--primary-color);
+    text-align: center;
+}
+
+header h1 {
+    color: var(--primary-color);
+    font-size: 2.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0.2rem;
+}
+
+header h2 {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+/* Contenedor principal */
+main {
+    max-width: 1200px;
+    margin: 2.5rem auto;
+    padding: 0 1.5rem;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.page-title {
+    font-size: 2rem;
+    border-left: 6px solid var(--primary-color);
+    padding-left: 12px;
+}
+
+/* Botones */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    box-shadow: 0 4px 8px rgba(255, 102, 0, 0.3);
+}
+
+.btn-secondary {
+    background-color: #333333;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #444444;
+}
+
+.btn-edit {
+    background-color: var(--btn-edit);
+    color: #111;
+    padding: 0.5rem;
+}
+
+.btn-edit:hover {
+    background-color: var(--btn-edit-hover);
+}
+
+.btn-delete {
+    background-color: var(--btn-delete);
+    color: #fff;
+    padding: 0.5rem;
+}
+
+.btn-delete:hover {
+    background-color: var(--btn-delete-hover);
+}
+
+/* Tabla Responsive */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    background-color: var(--bg-panel);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    border: 1px solid var(--border-color);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 900px;
+}
+
+th, td {
+    padding: 1.2rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    background-color: #000000;
+    color: var(--primary-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    position: sticky;
+    top: 0;
+}
+
+tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+tbody tr:hover {
+    background-color: rgba(255, 102, 0, 0.08);
+}
+
+.actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Iconos SVG */
+.icon {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+
+/* --- ESTILOS DEL FORMULARIO --- */
+.form-container {
+    background-color: var(--bg-panel);
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    border: 1px solid var(--border-color);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-header {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+}
+
+.form-header h2 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.form-header p {
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+/* Utilizando CSS Grid para organizar los campos del formulario */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1; /* Ocupa todas las columnas disponibles */
+}
+
+label {
+    color: var(--text-light);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.form-control {
+    background-color: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    color: var(--text-light);
+    padding: 0.8rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(255, 102, 0, 0.2);
+}
+
+.form-control::placeholder {
+    color: #666;
+}
+
+select.form-control {
+    cursor: pointer;
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23ff6600%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 1rem top 50%;
+    background-size: 0.65rem auto;
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* En pantallas chicas, el formulario pasa a una sola columna */
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+        gap: 1rem;
+    }
+
+    .form-actions .btn {
+        width: 100%;
+    }
+}

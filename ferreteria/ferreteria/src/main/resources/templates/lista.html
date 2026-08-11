@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferretería - Productos Registrados</title>
+
+    <!-- THYMELEAF: Vinculación del archivo CSS externo.
+         En Spring Boot, coloca el archivo styles.css en la ruta: src/main/resources/static/css/styles.css -->
+    <link rel="stylesheet" href="styles.css" th:href="@{/css/styles.css}">
+</head>
+<body>
+
+<header>
+    <h1>Ferretería</h1>
+    <h2>Sistema de gestión</h2>
+</header>
+
+<main>
+    <div class="page-header">
+        <h2 class="page-title">Productos registrados</h2>
+        <!-- THYMELEAF: El th:href enlaza al controlador -->
+        <a href="#" th:href="@{/productos/nuevo}" class="btn btn-primary">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+            Nuevo producto
+        </a>
+    </div>
+
+    <section class="targeta" th:if="${!productos.isEmpty()} ">
+        <div class="table-container">
+            <table>
+                <thead>
+                <tr>
+                    <th>Cod</th>
+                    <th>Nombre</th>
+                    <th>Marca</th>
+                    <th>Categoría</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Descripción</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- THYMELEAF: Iteración sobre la lista de productos -->
+
+                    <tr th:each="producto : ${productos}">
+
+                        <td th:text="${producto.id}"></td>
+                        <td th:text="${producto.nombre}"></td>
+                        <td th:text="${producto.marca}"></td>
+                        <td th:text="${producto.categoria}"></td>
+                        <td th:text="${producto.precio}"></td>
+                        <td th:text="${producto.stock}"></td>
+                        <td th:text="${producto.descripcion}"></td>
+
+                        <td class="actions">
+                        <!-- THYMELEAF: Botón Editar -->
+                        <a href="@{/productos/editar/{id}(id=${producto.id})}" class="btn btn-edit" title="Editar">
+                            <svg class="icon" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+                        </a>
+
+                        <!-- THYMELEAF: Formulario Eliminar -->
+                        <form action="@{/productos/eliminar/${producto.id}}" method="post" style="display:inline;">
+                            <button type="button" class="btn btn-delete" title="Eliminar" onclick="confirm('¿Seguro que deseas eliminar este producto?')">
+                                <svg class="icon" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+                            </button>
+                        </form>
+                        </td>
+                    </tr>
+
+            </table>
+        </div>
+    </section>
+
+    <section class="targeta" th:if="${productos.isEmpty()}">
+        <p>No hay productos registrados.</p>
+    </section>
+</main>
+
+</body>
+</html>

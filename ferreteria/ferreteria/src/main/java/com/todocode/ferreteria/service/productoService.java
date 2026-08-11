@@ -55,6 +55,10 @@ public class productoService implements IProductoService {
     }
 
     private boolean validarDatos(Producto producto) {
+        if (producto==null) {
+            return false;
+        }
+
         if (producto.getNombre() == null || producto.getNombre().isEmpty()) {
             return false;
         }
